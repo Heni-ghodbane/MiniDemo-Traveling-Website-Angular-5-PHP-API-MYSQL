@@ -1,0 +1,37 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light">
+  <div class="container">
+
+    <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse"
+      data-target="#navbarsExampleDefault" aria-controls="navbarsExampleDefault" aria-expanded="false"
+      aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <a class="navbar-brand" href="#">
+      <img width="50px" height="50px" src="/assets/img/logo.png" alt="">Traveling Dream </a>
+
+    <div class="collapse navbar-collapse" id="navbarsExampleDefault">
+      <ul class="navbar-nav ml-auto">
+        <li *ngIf="!isLoggedIn" class="nav-item">
+          <a class="nav-link" href="#" routerLink="/register">Register</a>
+        </li>
+        <li *ngIf="!isLoggedIn" class="nav-item">
+          <a class="nav-link" href="#" routerLink="/login">Login</a>
+        </li>
+        <li *ngIf="isLoggedIn" class="nav-item">
+          <a class="nav-link" href="#">{{loggedInUser}}</a>
+        </li>
+        <li *ngIf="isLoggedIn && isUser" class="nav-item">
+          <a class="nav-link" href="#" routerLink="/myspace">My Space</a>
+        </li>
+        <li *ngIf="isLoggedIn && isAdmin" class="nav-item">
+            <a class="nav-link" href="#" routerLink="/dashboard">Dashboard</a>
+          </li>
+        <li *ngIf="isLoggedIn" class="nav-item">
+          <a class="nav-link" href="#" (click)="onLogoutClick()">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<br><br>

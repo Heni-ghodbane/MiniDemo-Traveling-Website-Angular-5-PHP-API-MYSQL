@@ -1,0 +1,15 @@
+RewriteEngine On # Turn on the rewriting engine
+
+RewriteRule ^flights?$ flight.php [NC,L]
+RewriteRule ^flight/?$ flight.php [NC,L]
+RewriteRule ^flight/([0-9]+)/?$ flight.php?id=$1 [NC,L]
+
+RewriteRule ^flight/booking?$ booking.php [NC,L]
+RewriteRule ^flight/booking/([0-9]+)/?$ booking.php?id=$1 [NC,L]
+
+RewriteRule ^user?$ user.php [NC,L]
+RewriteRule ^user/([0-9]+)/?$ user.php?id=$1 [NC,L]
+
+RewriteRule ^users?$ user.php [NC,L]
+
+RewriteRule ^payment?$ payment.php [NC,L]

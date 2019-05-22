@@ -1,0 +1,55 @@
+.no-pad {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.no-mar {
+  margin-left: 0px;
+  margin-right: 0px;
+}
+
+.less-per {
+  width: 16%;
+  float: left;
+  margin-right: 1%;
+}
+.less-btn {
+  width: 5%;
+  float: left;
+  margin-right: 1%;
+}
+.less-btn .cst-btn {
+  width: 85px;
+  height: 85px;
+  border-radius: 100%;
+  top: -32px;
+}
+
+.persent-one {
+  float: left;
+  margin-right: 1%;
+  position: relative;
+  margin-bottom: 10px;
+}
+.persent-one i {
+  position: absolute;
+  left: 10px;
+  top: 10px;
+  color: #191919;
+  font-size: 18px;
+}
+
+.textboxstyle {
+  width: 100%;
+  float: left;
+  padding: 8px 10px 8px 30px;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.wrn-btn {
+  font-size: 16px;
+  font-weight: 400;
+  text-transform: capitalize;
+  border-radius:0;
+}

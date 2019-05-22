@@ -1,0 +1,63 @@
+<div class="card" >
+  <ul class="list-group list-group-flush">
+
+
+    <div *ngIf="availibleFlights?.length == 0">
+      <h1>Unfortunately, There is not Flight match with this dates, respectively the destinations</h1>
+    </div>
+
+    <li class="list-group-item" *ngFor="let item of availibleFlights">
+
+      <div class="row align-items-center">
+        <div class="col-10">
+          <div class="row align-items-center">
+            <div class="col-6">
+              <span class="fas fa-map-marked-alt"></span> From <strong class="text-warning">{{item.fromCity}}</strong> to <strong class="text-warning">{{item.toCity}}</strong> <br>
+              <div>
+                <span class="fas fa-paper-plane"></span>
+                Airline: <strong>{{item.airlineName}}</strong>
+              </div>
+            </div>
+            <div class="col-6">
+                <span class="fas fa-award text-warning price"></span>
+                <span class="text-success price">{{item.price}} EUR</span>
+            </div>
+          </div>
+          <hr>
+          <span class="fas fa-plane-departure"></span> <span class="text-primary">{{item.departureDate}} at {{item.departureHour}}</span> <br>
+          <span class="fas fa-plane-arrival"></span> <span class="text-primary">{{item.returnDate}} at {{item.returnHour}}</span> <br>
+
+             <div class="row">
+              <div class="col-3">
+                <span class="fas fa-chair"></span>
+                <strong class="text-success">{{item.seatsNbr}}</strong> Available seats
+              </div>
+              <div class="col-3">
+                <span class="fas fa-history"></span>
+                <strong class="text-success">{{item.flightDuration}}</strong> Hours
+              </div>
+              <div class="col-3">
+                <span class="fas fa-star-half-alt"></span>
+                <strong class="text-success">{{item.classType}}</strong> Class
+              </div>
+              <div class="col-3">
+                <span class="fas fa-hamburger"></span>
+                <strong [ngClass]="{
+                  'text-success':item.isFoodInkl === '1',
+                  'text-danger':item.isFoodInkl === '0'
+                }">
+                <span *ngIf="item.isFoodInkl === '1'">incl.</span>
+                <span *ngIf="item.isFoodInkl === '0'">exc.</span>
+               </strong> Food
+              </div>
+             </div>
+
+        </div>
+        <div class="col-2">
+          <a href="/flight/booking/{{item.id}}" class="btn btn-primary btn-primary"><i class="fas fa-ticket-alt"></i> Book Now </a>
+        </div>
+      </div>
+
+    </li>
+  </ul>
+</div>

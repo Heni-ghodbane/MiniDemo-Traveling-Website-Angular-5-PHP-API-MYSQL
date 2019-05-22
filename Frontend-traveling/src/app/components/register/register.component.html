@@ -1,0 +1,63 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page"><a href="#">Home </a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="#">Register </a></li>
+  </ol>
+</nav>
+
+
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <div class="card">
+      <div class="card-block ml-3 mr-3">
+        <img class="mx-auto d-block" width="150px" height="150px" src="/assets/img/logo.png" alt="">
+        <h1 class="text-center">Register</h1>
+        <form novalidate class="needs-validation" #f="ngForm" (ngSubmit)="onSubmitRegister(f)">
+          <div class="form-group">
+            <label for="firstName">Full Name</label>
+            <input type="text" class="form-control" [(ngModel)]="registerReq.fullName" name="fullName" required>
+            <div class="invalid-feedback">
+                Full name is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="Birthday">Birthday</label>
+            <div class="input-group">
+            <input class="form-control"
+                    [(ngModel)]="registerReq.birthday" name="birthday" id="from-date" placeholder="" required ngbDatepicker #d1="ngbDatepicker">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary fa fa-calendar" (click)="d1.toggle()" type="button"></button>
+            </div>
+            <div class="invalid-feedback">
+                Birthday is required.
+            </div>
+            </div>
+
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" class="form-control" [(ngModel)]="registerReq.email" name="email" required>
+            <div class="invalid-feedback">
+                Email is required.
+            </div>
+          </div>
+          <div class="form-group">
+              <label for="username">Username</label>
+              <input type="text" class="form-control" [(ngModel)]="registerReq.username" name="username" required>
+              <div class="invalid-feedback">
+                  Username is required.
+              </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" [(ngModel)]="registerReq.password" name="password" required>
+            <div class="invalid-feedback">
+                Password is required.
+            </div>
+          </div>
+          <input type="submit" class="btn btn-primary btn-block" value="Submit">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,32 @@
+<div class="col-md-10 order-md-1">
+  <div class="ml-3" *ngIf="listClients?.length == 0">
+      <h1>Unfortunately, There is no registred Client.</h1>
+  </div>
+  <div *ngIf="listClients?.length > 0">
+      <h4 class="mb-3">List of Registered Clients</h4>
+
+      <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">Full name</th>
+              <th scope="col">Username</th>
+              <th scope="col">Birthday</th>
+              <th scope="col">Email</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of listClients; let i = index">
+              <th scope="row">{{i}}</th>
+              <td>{{item.fullName}}</td>
+              <td>{{item.username}}</td>
+              <td>{{item.birthday}}</td>
+              <td>{{item.email}}</td>
+            </tr>
+          </tbody>
+        </table>
+
+  </div>
+
+
+  </div>

@@ -1,0 +1,118 @@
+<div class="tab-content" id="v-pills-tabContent">
+    <div class="tab-pane fade show active" id="v-pills-home" role="tabpanel" aria-labelledby="v-pills-home-tab">
+        <div class="ml-3" *ngIf="listReservations?.length == 0">
+            <h1>Unfortunately, There is not reservations.</h1>
+        </div>
+        <div *ngIf="listReservations?.length > 0">
+            <h4 class="ml-3 mb-3">List of Reservations (Flights)</h4>
+        </div>
+
+        <li class="list-group-item ml-3" *ngFor="let item of listReservations">
+
+            <div class="row align-items-center">
+                <div class="col-10">
+                  <div class="row align-items-center">
+                    <div class="col-6">
+                      <span class="fas fa-map-marked-alt"></span> From <strong class="text-warning">{{item.fromCity}}</strong> to <strong class="text-warning">{{item.toCity}}</strong> <br>
+                      <div>
+                        <span class="fas fa-paper-plane"></span>
+                        Airline: <strong>{{item.airlineName}}</strong>
+                      </div>
+                    </div>
+                    <div class="col-6">
+                        <span class="fas fa-award text-warning price"></span>
+                        <span class="text-success price">{{item.price}} EUR</span>
+                    </div>
+                  </div>
+                  <hr>
+                  <span class="fas fa-plane-departure"></span> <span class="text-primary">{{item.departureDate}} at {{item.departureHour}}</span> <br>
+                  <span class="fas fa-plane-arrival"></span> <span class="text-primary">{{item.returnDate}} at {{item.returnHour}}</span> <br>
+
+                     <div class="row">
+                      <div class="col-3">
+                        <span class="fas fa-chair"></span>
+                        <strong class="text-success">{{item.seatsNbr}}</strong> Available seats
+                      </div>
+                      <div class="col-3">
+                        <span class="fas fa-history"></span>
+                        <strong class="text-success">{{item.flightDuration}}</strong> Hours
+                      </div>
+                      <div class="col-3">
+                        <span class="fas fa-star-half-alt"></span>
+                        <strong class="text-success">{{item.classType}}</strong> Class
+                      </div>
+                      <div class="col-3">
+                        <span class="fas fa-hamburger"></span>
+                        <strong [ngClass]="{
+                          'text-success':item.isFoodInkl === '1',
+                          'text-danger':item.isFoodInkl === '0'
+                        }">
+                        <span *ngIf="item.isFoodInkl === '1'">incl.</span>
+                        <span *ngIf="item.isFoodInkl === '0'">exc.</span>
+                       </strong> Food
+                      </div>
+                     </div>
+                     <hr>
+                     <div class="row align-items-center">
+                        <div class="col-12" id="accordion">
+                            <div class="card">
+                              <div class="card-header" id="headingOne">
+                                <h5 class="mb-0">
+                                  <button class="btn btn-link" data-toggle="collapse" data-target="#collapseOne" aria-expanded="ture" aria-controls="collapseOne">
+                                    Booking and Passenger Informations
+                                  </button>
+                                </h5>
+                              </div>
+
+                              <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordion">
+                                <div class="card-body">
+
+                                    <div class="col-6">
+                                        <span class="fas fa-user"></span> Passenger : {{item.firstName}} {{item.lastName}}<br>
+                                        <span class="fas fa-address-card"></span> Address : {{item.address}}, {{item.zipCode}} {{item.state}}<br>
+                                        <span class="fas fa-flag"></span> Country : {{item.country}}<br>
+                                        <span class="fas fa-at"></span> Email : {{item.email}}<br>
+                                      </div>
+                                    <div class="col-6">
+                                        <span class="fas fa-credit-card"></span> Payment : <span *ngIf="item.paymentMethod == '1'"> Credit Card </span>
+                                                                                    <span *ngIf="item.paymentMethod == '0'"> Bank Transfer </span><br>
+
+                                       <!--
+                                      <app-payment-info [id_payment]="item.id_payment" [payment_type]="item.paymentMethod"></app-payment-info>
+                                       <div *ngIf="item.paymentMethod == '1'">
+                                          <span class="fas fa-user"></span> card Holder : {{itemPayment.cardHolder}}<br>
+                                          <span class="fas fa-user"></span> card Number : {{itemPayment.firstname}}<br>
+                                          <span class="fas fa-user"></span> Expiration : {{itemPayment.expiryMonth}}/{{item.expiryYear}}<br>
+                                          <span class="fas fa-user"></span> CVV Code : {{itemPayment.cvvCode}}<br>
+                                      </div>
+
+                                      <div *ngIf="item.paymentMethod == '0'">
+                                          <span class="fas fa-user"></span> card Holder : {{itemPayment.cardHolder}}<br>
+                                          <span class="fas fa-user"></span> card Number : {{itemPayment.firstname}}<br>
+                                          <span class="fas fa-user"></span> Expiration : {{itemPayment.expiryMonth}}/{{item.expiryYear}}<br>
+                                          <span class="fas fa-user"></span> CVV Code : {{itemPayment.cvvCode}}<br>
+                                      </div>
+                                      -->
+                                      </div>
+
+                                </div>
+                              </div>
+                            </div>
+                        </div>
+                      </div>
+                  </div>
+              </div>
+
+        </li>
+
+    </div>
+    <div class="tab-pane fade" id="v-pills-profile" role="tabpanel" aria-labelledby="v-pills-profile-tab">
+      <app-add-flight></app-add-flight>
+    </div>
+    <div class="tab-pane fade" id="v-pills-messages" role="tabpanel" aria-labelledby="v-pills-messages-tab">
+      <app-list-clients></app-list-clients>
+    </div>
+    <div class="tab-pane fade" id="v-pills-settings" role="tabpanel" aria-labelledby="v-pills-settings-tab">
+      <app-admin-settings></app-admin-settings>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page"><a href="#">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="#">Login </a></li>
+
+  </ol>
+</nav>
+
+
+<div class="row">
+  <div class="col-md-6 offset-md-3">
+    <div class="card">
+      <div class="card-block ml-3 mr-3">
+        <img class="mx-auto d-block" width="150px" height="150px" src="/assets/img/logo.png" alt="">
+        <h1 class="text-center">Login</h1>
+        <form novalidate class="needs-validation" #f="ngForm" (ngSubmit)="onSubmitLogin(f)">
+          <div class="form-group">
+            <label for="username">Username</label>
+            <input type="text" class="form-control" [(ngModel)]="loginReq.username"  placeholder=""  name="username" required>
+            <div class="invalid-feedback">
+                Username is required.
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="password">Password</label>
+            <input type="password" class="form-control" [(ngModel)]="loginReq.password"  placeholder=""  name="password" required>
+            <div class="invalid-feedback">
+                Password is required.
+            </div>
+          </div>
+          <div class="form-group">
+              <label for="usertype">Account Type</label>
+              <select class="form-control custom-select" id="usertype" name="usertype" [(ngModel)]="loginReq.usertype" required>
+              <option selected value="client">Public/Client</option>
+              <option value="admin">Moderator/Private</option>
+              </select>
+              <div class="invalid-feedback">
+                  Account Type is required.
+              </div>
+            </div>
+          <input type="submit" class="btn btn-primary btn-block" value="Submit">
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

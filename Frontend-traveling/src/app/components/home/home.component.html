@@ -1,0 +1,134 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item" aria-current="page"><a href="#">Home</a></li>
+    <li class="breadcrumb-item active" aria-current="page"><a href="#">Search Flight/Hotel </a></li>
+  </ol>
+</nav>
+
+<div class="">
+  <ul class="nav nav-tabs" id="myTab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="flight-tab" data-toggle="tab" href="#flight" role="tab" aria-controls="flight"
+        aria-selected="true">
+        <i class="fa fa-plane" aria-hidden="true"></i> Flight</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="hotel-tab" data-toggle="tab" href="#hotel" role="tab" aria-controls="hotel"
+        aria-selected="false">
+        <i class="fa fa-building" aria-hidden="true"></i> Hotel</a>
+    </li>
+  </ul>
+</div>
+
+<div class="">
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active" id="flight" role="tabpanel" aria-labelledby="flight-tab">
+      <br>
+      <form novalidate class="needs-validation" #f="ngForm" (ngSubmit)="onSubmitSearchFlights(f)">
+        <div class="row no-mar">
+          <div class="no-pad col-lg-2 col-md-2 col-sm-12 mr-1">
+            <!--<i class="fa fa-map-marker" aria-hidden="true"></i>-->
+            <input type="text" [(ngModel)]="searchReq.fromCity" name="fromCity" class="form-control" id="dep"
+              placeholder="From City or airport" required>
+            <div class="invalid-feedback">
+              From City/airport is required.
+            </div>
+          </div>
+          <div class="no-pad col-lg-2 col-md-2 col-sm-12 mr-1">
+            <!--<i class="fa fa-map-marker" aria-hidden="true"></i>-->
+            <input type="text" [(ngModel)]="searchReq.toCity" name="toCity" class="form-control" id="arival"
+              placeholder="To City or airport" required>
+            <div class="invalid-feedback">
+              To City/airport is required.
+            </div>
+          </div>
+          <div class="no-pad col-lg-2 col-md-2 col-sm-12 mr-1">
+            <!--<i class="fa fa-calendar" aria-hidden="true"></i>-->
+            <div class="input-group">
+              <input class="form-control"
+                      [(ngModel)]="searchReq.departureDate" [minDate]="minDate" name="departureDate" id="from-date" placeholder="Start date" required ngbDatepicker #d1="ngbDatepicker">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary fa fa-calendar" (click)="d1.toggle()" type="button"></button>
+              </div>
+              <div class="invalid-feedback">
+                  Departure date is required.
+              </div>
+            </div>
+          </div>
+          <div class="no-pad col-lg-2 col-md-2 col-sm-12 mr-1">
+            <!--<i class="fa fa-calendar" aria-hidden="true"></i>-->
+            <div class="input-group">
+              <input class="form-control"
+                      [(ngModel)]="searchReq.returnDate" [minDate]="minDate" name="returnDate" id="to-date" placeholder="Return date" required ngbDatepicker #d2="ngbDatepicker">
+              <div class="input-group-append">
+                <button class="btn btn-outline-secondary fa fa-calendar" (click)="d2.toggle()" type="button"></button>
+              </div>
+              <div class="invalid-feedback">
+                  Return date is required.
+              </div>
+            </div>
+          </div>
+          <div class="no-pad col-lg-2 col-md-2 col-sm-12 mr-1">
+            <!--<i class="fa fa-users" aria-hidden="true"></i>-->
+            <select class="form-control custom-select" id="passenger" name="passengerNbr"
+              [(ngModel)]="searchReq.passengerNbr" required>
+              <option selected [value]="1">1 Passenger</option>
+              <option [value]="2">2 Passengers</option>
+              <option [value]="3">3 Passengers</option>
+            </select>
+          </div>
+          <div class="no-pad col-lg-1 col-md-1 col-sm-12 mr-1">
+            <button type="submit" class="btn btn-danger wrn-btn">Search</button>
+          </div>
+        </div>
+      </form>
+      <br>
+      <app-flights-search-list #flightsSearchListChild [searchFlightReq]="searchFlightReq"></app-flights-search-list>
+
+    </div>
+
+    <div class="tab-pane fade" id="hotel" role="tabpanel" aria-labelledby="hotel-tab">
+      <br>
+      <form novalidate class="needs-validation" #f="ngForm" (ngSubmit)="onSubmitSearchHotels(f)">
+        <div class="row no-mar">
+          <div class="no-pad col-lg-2 col-md-2 col-sm-12 mr-1">
+            <!-- <i class="fa fa-bed" aria-hidden="true"></i>-->
+            <input type="text" required name="hotel-name" class="form-control" id="hotel-name"
+              placeholder=" City or Hotel name">
+            <div class="invalid-feedback">
+              From City/Hotel is required.
+            </div>
+          </div>
+          <div class="no-pad col-lg-2 col-md-2 col-sm-12 mr-1">
+            <!--<i class="fa fa-calendar" aria-hidden="true"></i>-->
+            <input type="date" required name="in-date" class="form-control" id="in-date" placeholder="Check-in">
+            <div class="invalid-feedback">
+              Check-in Date is required.
+            </div>
+          </div>
+          <div class="no-pad col-lg-2 col-md-2 col-sm-12 mr-1">
+            <!--<i class="fa fa-calendar" aria-hidden="true"></i>-->
+            <input type="date" required name="out-date" class="form-control" id="out-date" placeholder="Check-out">
+            <div class="invalid-feedback">
+              Check-out date is required.
+            </div>
+          </div>
+          <div class="no-pad col-lg-2 col-md-2 col-sm-12 mr-1">
+            <!--<i class="fa fa-users" aria-hidden="true"></i>-->
+            <select class="form-control custom-select mr-sm-2" id="reserve-rooms" required>
+              <option selected value="1">1 room, 1 Person</option>
+              <option value="2">1 Room, 2 Persons</option>
+              <option value="3">2 Rooms, 2 Persons</option>
+              <option value="4">2 Rooms, 4 Persons</option>
+            </select>
+          </div>
+          <div class="no-pad col-lg-1 col-md-1 col-sm-12 mr-1">
+            <button type="submit" class="btn btn-danger wrn-btn">Search</button>
+          </div>
+        </div>
+      </form>
+      <br>
+      <app-hotels-search-list [searchHotelReq]="searchHotelReq"></app-hotels-search-list>
+    </div>
+  </div>
+</div>

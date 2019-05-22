@@ -1,0 +1,226 @@
+<div class="col-md-10 order-md-1">
+    <h4 class="mb-3">Add New Flight</h4>
+    <form novalidate class="needs-validation" #f="ngForm" (ngSubmit)="onSubmitNewFlight(f)">
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="fromCity">From / City</label>
+            <input type="text" [(ngModel)]="flightReq.fromCity" name="fromCity"  class="form-control" id="fromCity" placeholder="" required>
+            <div class="invalid-feedback">
+                From / City is required.
+            </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="toCity">To / City</label>
+            <input type="text" [(ngModel)]="flightReq.toCity" name="toCity"  class="form-control" id="toCity" placeholder="" required>
+            <div class="invalid-feedback">
+                To / City is required.
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+          <div class="col-md-6 mb-3">
+            <label for="departureDate">Departure Date</label>
+            <div class="input-group">
+                <input class="form-control"
+                        [(ngModel)]="flightReq.departureDate" [minDate]="minDate" name="departureDate" id="from-date" placeholder="Start date" required ngbDatepicker #d1="ngbDatepicker">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary fa fa-calendar" (click)="d1.toggle()" type="button"></button>
+                </div>
+                <div class="invalid-feedback">
+                    Departure date is required.
+                </div>
+              </div>
+          </div>
+          <div class="col-md-6 mb-3">
+            <label for="returnDate">Return Date</label>
+            <div class="input-group">
+                <input class="form-control"
+                        [(ngModel)]="flightReq.returnDate" [minDate]="minDate" name="returnDate" id="from-date" placeholder="Return date" required ngbDatepicker #d2="ngbDatepicker">
+                <div class="input-group-append">
+                  <button class="btn btn-outline-secondary fa fa-calendar" (click)="d2.toggle()" type="button"></button>
+                </div>
+                <div class="invalid-feedback">
+                    Return date is required.
+                </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-6 mb-3">
+              <div class="row">
+              <div class="col-md-6 mb-3">
+                  <label for="departureHours">Hours</label>
+                  <select  [(ngModel)]="departureDuration.hours" (change)="calculateFlightDuration()" name="departureHours" class="form-control" placeholder="" required>
+                      <option selected value="01">01</option>
+                      <option value="02">02</option>
+                      <option value="03">03</option>
+                      <option value="04">04</option>
+                      <option value="05">05</option>
+                      <option value="06">06</option>
+                      <option value="07">07</option>
+                      <option value="08">08</option>
+                      <option value="09">09</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                      <option value="13">13</option>
+                      <option value="14">14</option>
+                      <option value="15">15</option>
+                      <option value="16">16</option>
+                      <option value="17">17</option>
+                      <option value="18">18</option>
+                      <option value="19">19</option>
+                      <option value="20">20</option>
+                      <option value="21">21</option>
+                      <option value="22">22</option>
+                      <option value="23">23</option>
+                      <option value="24">24</option>
+                    </select>
+                  <div class="invalid-feedback">
+                    Hours is required
+                  </div>
+              </div>
+              <div class="col-md-6 mb-3">
+                  <label for="departureMinutes">Minutes</label>
+                  <select  [(ngModel)]="departureDuration.minutes"  (change)="calculateFlightDuration()" name="departureMinutes" class="form-control" placeholder="" required>
+                      <option selected value="00">00</option>
+                      <option value="05">05</option>
+                      <option value="10">10</option>
+                      <option value="15">15</option>
+                      <option value="20">20</option>
+                      <option value="25">25</option>
+                      <option value="30">30</option>
+                      <option value="35">35</option>
+                      <option value="40">40</option>
+                      <option value="45">45</option>
+                      <option value="50">50</option>
+                      <option value="55">55</option>
+                    </select>
+                  <div class="invalid-feedback">
+                    Minutes is required
+                  </div>
+              </div>
+              </div>
+            </div>
+
+            <div class="col-md-6 mb-3">
+              <div class="row">
+                <div class="col-md-6 mb-3">
+                    <label for="returnHours">Hours</label>
+                    <select  [(ngModel)]="returnDuration.hours"  (change)="calculateFlightDuration()" name="returnHours" class="form-control" placeholder="" required>
+                        <option selected value="01">01</option>
+                        <option value="02">02</option>
+                        <option value="03">03</option>
+                        <option value="04">04</option>
+                        <option value="05">05</option>
+                        <option value="06">06</option>
+                        <option value="07">07</option>
+                        <option value="08">08</option>
+                        <option value="09">09</option>
+                        <option value="10">10</option>
+                        <option value="11">11</option>
+                        <option value="12">12</option>
+                        <option value="13">13</option>
+                        <option value="14">14</option>
+                        <option value="15">15</option>
+                        <option value="16">16</option>
+                        <option value="17">17</option>
+                        <option value="18">18</option>
+                        <option value="19">19</option>
+                        <option value="20">20</option>
+                        <option value="21">21</option>
+                        <option value="22">22</option>
+                        <option value="23">23</option>
+                        <option value="24">24</option>
+                      </select>
+                    <div class="invalid-feedback">
+                      Hours is required
+                    </div>
+                </div>
+                <div class="col-md-6 mb-3">
+                    <label for="returnMinutes">Minutes</label>
+                    <select  [(ngModel)]="returnDuration.minutes" (change)="calculateFlightDuration()" name="returnMinutes" class="form-control" placeholder="" required>
+                        <option selected value="00">00</option>
+                        <option value="05">05</option>
+                        <option value="10">10</option>
+                        <option value="15">15</option>
+                        <option value="20">20</option>
+                        <option value="25">25</option>
+                        <option value="30">30</option>
+                        <option value="35">35</option>
+                        <option value="40">40</option>
+                        <option value="45">45</option>
+                        <option value="50">50</option>
+                        <option value="55">55</option>
+                      </select>
+                    <div class="invalid-feedback">
+                      Minutes is required
+                    </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+       <div class="row">
+          <div class="col-md-4 mb-3">
+            <label for="airlineName">Airline Name</label>
+            <input type="text" [(ngModel)]="flightReq.airlineName" name="airlineName" name="airlineName" class="form-control" id="airlineName" placeholder="" required>
+            <div class="invalid-feedback">
+              Airline Name is required.
+            </div>
+          </div>
+          <div class="col-md-3 mb-3">
+              <label for="classType">Class type</label>
+              <select  [(ngModel)]="flightReq.classType" name="classType" class="form-control" placeholder="" required>
+                  <option selected value="Economy">Economy</option>
+                  <option value="Business">Business</option>
+                </select>
+              <div class="invalid-feedback">
+                Class Type is required
+              </div>
+          </div>
+          <div class="col-md-3 mb-3">
+              <label for="flightDuration">Flight Duration</label>
+              <input type="text" disabled [(ngModel)]="flightReq.flightDuration" name="flightDuration" class="form-control" id="flightDuration" placeholder="" required>
+          </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4 mb-3">
+              <label for="isFoodInkl">Food on Board</label>
+              <div class="input-group">
+                <div class="custom-control custom-radio">
+                  <input [(ngModel)]="flightReq.isFoodInkl" name="isFoodInkl"  [value]="1" id="foodInkl" type="radio" class="custom-control-input" checked required>
+                  <label class="custom-control-label" for="foodInkl">Inclusive</label>
+                </div>
+                <span class="mr-2"></span>
+                <div class="custom-control custom-radio">
+                  <input [(ngModel)]="flightReq.isFoodInkl" name="isFoodInkl"  [value]="0" id="foodExc" type="radio" class="custom-control-input" required>
+                  <label class="custom-control-label" for="foodExc">Exclusive</label>
+                </div>
+              </div>
+            </div>
+
+            <div class="col-md-3 mb-3">
+                <label for="airlineName">Number Seats</label>
+                <input type="text" [(ngModel)]="flightReq.seatsNbr" name="seatsNbr" name="seatsNbr" class="form-control" id="seatsNbr" placeholder="" required>
+                <div class="invalid-feedback">
+                    Number Seats Name is required.
+                </div>
+             </div>
+
+             <div class="col-md-3 mb-3">
+                <label for="price">Price per Seat (TND)</label>
+                <input type="text" [(ngModel)]="flightReq.price" name="price" name="price" class="form-control" id="price" placeholder="" required>
+                <div class="invalid-feedback">
+                  Airline Name is required.
+                </div>
+             </div>
+        </div>
+         <hr class="mb-4">
+      <button class="btn btn-primary btn-lg btn-block" type="submit">Add Flight</button>
+    </form>
+  </div>
