@@ -1,8 +1,8 @@
 "# MiniDemo-Traveling-Website-Angular-5-PHP-API-MYSQL"
 
-1/ Download and Install :  
-XAMPP: https://www.apachefriends.org/download.html
-Nodejs: https://nodejs.org/en/download/ 
+1/ Download and Install:        
+    XAMPP: https://www.apachefriends.org/download.html  
+    Nodejs: https://nodejs.org/en/download/ 
 
 2/ Rest API
 - Run XAMP server first:
@@ -17,8 +17,8 @@ Nodejs: https://nodejs.org/en/download/
 3/ Frontend project  -> open with visual studio code
 
 - Run the command line npm install to install all dependencies of this project and then run ng serve to preview the website on the browser.
-- To see the website interface go to http://localhost:4200
-    Login as an admin : username : admin / password: admin
+- To see the website interface go to http://localhost:4200              
+    Login as an admin : username : admin / password: admin              
     Login as a normal user/cleint: username: hani / password: 1990
 
 Some screenshots:
