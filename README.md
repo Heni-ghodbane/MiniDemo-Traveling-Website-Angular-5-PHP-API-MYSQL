@@ -1,8 +1,8 @@
 "# MiniDemo-Traveling-Website-Angular-5-PHP-API-MYSQL"
 
 1/ Download and Install :  
-https://www.apachefriends.org/download.html
-https://nodejs.org/en/download/ 
+XAMPP: https://www.apachefriends.org/download.html
+Nodejs: https://nodejs.org/en/download/ 
 
 2/ Rest API
 - Run XAMP server first:
